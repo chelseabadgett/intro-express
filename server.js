@@ -1,3 +1,4 @@
+const { response } = require('express')
 const express = require('express')
 const PORT = process.env.PORT || 3001
 
@@ -20,6 +21,32 @@ app.get('/find', (request, response) => {
   )
   response.send({
     msg: `${request.query.myName} is ${request.query.myAge} years old.`
+  })
+})
+
+// homework
+
+app.get(`/dogs`, (request, response) => {
+  response.send(`mutt`)
+})
+
+app.get(`/cats/:catName`, (request, response) => {
+  response.send(`${request.params.catName}`)
+})
+
+app.post(`/towns`, (request, response) => {
+  response.send({ hometown: 'Atlanta' })
+})
+
+app.put(`/profile/update/:username`, (request, response) => {
+  response.send(
+    `User profile with the username of ${request.params.username} was updated`
+  )
+})
+
+app.delete(`/tacos`, (request, response) => {
+  response.send({
+    message: `I deleted the ${request.query.type} with an id of ${request.query.tacoId}`
   })
 })
 
